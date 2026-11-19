@@ -157,9 +157,9 @@ e um **video autoral gravado de 2 a 5 minutos**. Use `docs/Roteiro_Video.md`.
 Suba estes arquivos ao **seu** repositorio GitHub, sem `node_modules` e `.env`,
 e coloque o link do repositorio nos comentarios da atividade.
 
-> A Ficha RDM foi preparada como modelo preenchido com o que foi verificado nesta
-> entrega. Os campos de implantacao Docker e testes de integracao ficam pendentes
-> ate a execucao real. Nao marque como 'aprovado' sem apresentar os comandos e logs.
+> A [Ficha RDM em PDF](docs/RDM_EstuLanches.pdf) registra a implantacao validada
+> em Docker Compose local e os resultados dos seis testes aprovados.
+> A [versao editavel](docs/RDM_EstuLanches.md) esta disponivel no repositorio.
 
 ## Como enviar ao GitHub
 
