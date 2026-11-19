@@ -1,0 +1,21 @@
+{
+  "name": "estulanches",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gestao de cardapio e pedidos da cantina escolar com Node, Express e PostgreSQL.",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=.env server.js",
+    "start": "node server.js",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "node --test tests/unit.test.js",
+    "test:integration": "node --test tests/integration.test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.23.1"
+  }
+}

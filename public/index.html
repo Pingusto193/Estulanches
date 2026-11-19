@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ed">
+  <title>EstuLanches | Cantina escolar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/funcoes.js" defer></script>
+  <script src="js/produtos.js" defer></script>
+  <script src="js/pedidos.js" defer></script>
+  <script src="js/acesso.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Ir para o conteúdo</a>
+  <header class="topo">
+    <div class="largura barra">
+      <a class="marca" href="/" aria-label="EstuLanches, início">
+        <span class="marca-icone" aria-hidden="true"><i></i></span>
+        <span>Estu<span>Lanches</span></span>
+      </a>
+      <span id="tipoServico" class="rotulo">Cantina escolar</span>
+      <nav id="navegacao" class="navegacao" aria-label="Navegação da cantina" hidden>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#meusPedidos">Pedidos</a>
+        <a id="atalhoAdmin" href="#areaAdmin" hidden>Administração</a>
+        <a class="link-carrinho" href="#resumoPedido">Carrinho <span id="contagemCarrinho">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="largura" tabindex="-1">
+    <section id="acesso" class="entrada">
+      <div class="chamada">
+        <div class="chamada-texto">
+          <h1>Seu lanche,<br> seu intervalo.</h1>
+          <p>Escolha no cardápio e acompanhe seu pedido na cantina da escola.</p>
+        </div>
+        <div class="chamada-foto" aria-hidden="true"></div>
+      </div>
+      <div class="painel acesso-painel">
+        <div class="seletor-acesso" role="group" aria-label="Acesso à conta">
+          <button type="button" id="modoLogin" aria-controls="formLogin" aria-pressed="true">Entrar</button>
+          <button type="button" id="modoCadastro" aria-controls="formCadastro" aria-pressed="false">Criar conta</button>
+        </div>
+        <h2 id="tituloAcesso">Acesse sua conta</h2>
+        <form id="formLogin" aria-labelledby="tituloAcesso">
+          <label>Login <input id="login" maxlength="100" autocomplete="username" autocapitalize="none" required></label>
+          <label>Senha <input id="senha" type="password" autocomplete="current-password" required></label>
+          <button class="botao-largo" type="submit">Entrar <span aria-hidden="true">→</span></button>
+        </form>
+        <form id="formCadastro" aria-labelledby="tituloAcesso" hidden>
+          <label>Nome <input id="nomeCadastro" maxlength="100" autocomplete="name" required></label>
+          <label>Login <input id="loginCadastro" maxlength="100" autocomplete="username" autocapitalize="none" required></label>
+          <label>Senha <input id="senhaCadastro" type="password" autocomplete="new-password" minlength="8" aria-describedby="dicaSenha" required></label>
+          <p class="dica" id="dicaSenha">Use pelo menos 8 caracteres.</p>
+          <button class="botao-largo" type="submit">Criar conta <span aria-hidden="true">→</span></button>
+        </form>
+        <p id="avisoAcesso" class="aviso-acesso" role="status"></p>
+      </div>
+    </section>
+
+    <section id="areaSistema" hidden>
+      <div class="bem-vindo">
+        <h1 id="boasVindas" tabindex="-1">Minha cantina</h1>
+        <button type="button" id="sair" class="secundario">Sair da conta</button>
+      </div>
+
+      <div class="grade-cantina">
+        <section id="cardapio" class="cardapio" aria-labelledby="tituloCardapio">
+          <div class="cabecalho-secao">
+            <h2 id="tituloCardapio">Cardápio</h2>
+            <label class="busca">
+              <span class="visualmente-oculto">Buscar no cardápio</span>
+              <input id="buscaProduto" type="search" placeholder="Buscar no cardápio">
+            </label>
+          </div>
+          <div id="listaProdutos" class="grade" aria-busy="true">
+            <p class="estado">Carregando cardápio…</p>
+          </div>
+          <p id="estadoBusca" class="visualmente-oculto" role="status"></p>
+        </section>
+
+        <aside id="resumoPedido" class="painel resumo" aria-labelledby="tituloCarrinho">
+          <h2 id="tituloCarrinho" tabindex="-1">Meu carrinho</h2>
+          <div id="carrinho"><p class="estado">Seu carrinho está vazio.</p></div>
+          <div class="total"><span>Total</span> <strong id="total">R$ 0,00</strong></div>
+          <button type="button" id="finalizarPedido" class="botao-largo" disabled>Finalizar pedido</button>
+        </aside>
+      </div>
+
+      <section id="meusPedidos" class="painel historico" aria-labelledby="tituloPedidos">
+        <div class="cabecalho-secao">
+          <h2 id="tituloPedidos">Meus pedidos</h2>
+          <button class="secundario" type="button" id="atualizarPedidos">Atualizar pedidos</button>
+        </div>
+        <div id="listaPedidos"><p class="estado">Carregando pedidos…</p></div>
+      </section>
+
+      <section id="areaAdmin" class="painel admin" aria-labelledby="tituloAdmin" hidden>
+        <h2 id="tituloAdmin">Administração da cantina</h2>
+        <div class="grade-admin">
+          <div>
+            <h3 id="tituloProduto">Cadastrar produto</h3>
+            <form id="formProduto" aria-labelledby="tituloProduto">
+              <input type="hidden" id="idProduto">
+              <label>Nome <input id="nomeProduto" maxlength="100" required></label>
+              <label>Descrição <input id="descricaoProduto" maxlength="500"></label>
+              <div class="campos">
+                <label>Preço em reais <input id="precoProduto" inputmode="decimal" placeholder="5,50" required></label>
+                <label>Estoque <input id="estoqueProduto" type="number" min="0" max="100000" value="10" required></label>
+              </div>
+              <div class="acoes">
+                <button type="submit" id="salvarProduto">Salvar produto</button>
+                <button type="button" id="limparProduto" class="secundario">Limpar</button>
+              </div>
+            </form>
+          </div>
+          <div>
+            <div class="cabecalho-secao">
+              <h3>Pedidos da cantina</h3>
+              <button class="secundario" type="button" id="atualizarTodos">Atualizar lista</button>
+            </div>
+            <div id="pedidosAdmin"><p class="estado">Carregando pedidos…</p></div>
+          </div>
+        </div>
+      </section>
+      <div id="avisoSistema" class="aviso-sistema" role="status"></div>
+    </section>
+  </main>
+
+  <footer class="largura rodape"><span>EstuLanches</span><span>Cantina escolar</span></footer>
+</body>
+</html>
